@@ -7,11 +7,11 @@ pub fn test_channels() {
 
     let handle1 = thread::spawn(move || {
         let val = String::from("hi");
-        tx.send(val).unwrap();
+        tx.send(val).expect("Could not send value");
     });
 
     let handle2 = thread::spawn(move || {
-        let received = rx.recv().unwrap();
+        let received = rx.recv().expect("Could not receive value");
         println!("Got: {}", received);
     });
 
