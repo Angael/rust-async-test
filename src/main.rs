@@ -1,5 +1,5 @@
 mod examples;
-use examples::{channels, sync_async_count};
+use examples::{channels, many_threads, sync_async_count};
 
 fn main() {
     println!("#start");
@@ -10,6 +10,9 @@ fn main() {
 
     // Demo 2
     channels::test_channels();
+
+    // Demo 3
+    many_threads::create_threads();
 
     println!("#end");
 }
