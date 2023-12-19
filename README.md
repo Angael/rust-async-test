@@ -1,4 +1,4 @@
-# Rust dev learning examples
+# Rust dev learning examples async
 
 ## Building release
 ```bash
