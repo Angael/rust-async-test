@@ -1,4 +1,8 @@
-use std::{sync::mpsc, thread};
+use std::{
+    sync::mpsc,
+    sync::{Arc, Mutex},
+    thread,
+};
 
 const NTHREADS: u16 = 64;
 
@@ -23,9 +27,26 @@ pub fn create_threads() {
         responses.push(received);
     }
 
+    for handle in handles {
+        handle.join().expect("Could not join thread");
+    }
+
     println!("Responses: {:?}", responses);
+}
+
+pub fn create_threads_arc() {
+    println!("[Many Threads Arc]");
+    let mut handles: Vec<thread::JoinHandle<()>> = Vec::new();
+    let responses = Arc::new(Mutex::new(vec![]));
+
+    for i in 0..NTHREADS {
+        let responses = Arc::clone(&responses);
+        handles.push(thread::spawn(move || responses.lock().unwrap().push(i)));
+    }
 
     for handle in handles {
         handle.join().expect("Could not join thread");
     }
+
+    println!("Responses: {:?}", responses.lock().unwrap());
 }
