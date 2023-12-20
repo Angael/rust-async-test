@@ -1,5 +1,5 @@
 mod examples;
-use examples::{channels, many_threads, share_state, sync_async_count};
+use examples::{channels, clojoures, many_threads, share_state, sync_async_count};
 
 fn main() {
     println!("#start");
@@ -18,6 +18,12 @@ fn main() {
     // Demo 4
     share_state::mutex();
     share_state::arc_mutex();
+
+    // Demo 5
+    clojoures::clojoures();
+
+    // Demo 6
+    examples::string_ops::string_ops();
 
     println!("#end");
 }
