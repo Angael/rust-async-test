@@ -6,7 +6,8 @@ pub fn string_ops() {
     println!("{}", s);
 
     let my_cut = &s;
-    my_cut.len();
+    let _a = s.len();
+    let _b = my_cut.len();
 
     let s1 = String::from("Hello");
     let s2 = String::from("World");
@@ -24,6 +25,29 @@ pub fn string_ops() {
     println!("{}", s8);
 
     for c in "नमस्ते".chars() {
-        println!("{}", c);
+        print!("({})", c);
     }
+    println!();
+}
+
+fn get_first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+    &s[..]
+}
+
+pub fn first_word() {
+    println!("[First Word]");
+
+    let s = String::from("One Two Three");
+    let word = get_first_word(s.as_str());
+    println!("First word: {}", word);
+
+    let s = "Hi, Nice to meet you!";
+    let word = get_first_word(&s);
+    println!("First word: {}", word);
 }

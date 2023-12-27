@@ -1,5 +1,5 @@
 mod examples;
-use examples::{channels, clojoures, many_threads, share_state, sync_async_count};
+use examples::{channels, clojoures, many_threads, share_state, string_ops, sync_async_count};
 
 fn main() {
     println!("#start");
@@ -23,7 +23,8 @@ fn main() {
     clojoures::clojoures();
 
     // Demo 6
-    examples::string_ops::string_ops();
+    string_ops::string_ops();
+    string_ops::first_word();
 
     println!("#end");
 }
