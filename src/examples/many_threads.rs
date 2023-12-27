@@ -4,7 +4,7 @@ use std::{
     thread,
 };
 
-const NTHREADS: u16 = 64;
+const NTHREADS: u16 = 16;
 
 pub fn create_threads() {
     println!("[Many Threads]");
