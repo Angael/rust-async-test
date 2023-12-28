@@ -1,42 +1,46 @@
 mod examples;
-use examples::{channels, clojoures, many_threads, share_state, string_ops, sync_async_count};
+use examples::{
+    channels, clojoures, custom_structs, many_threads, share_state, smart_pointers, string_ops,
+    sync_async_count,
+};
 
-fn clear_screen() {
-    print!("{esc}c", esc = 27 as char);
-
-    std::thread::sleep(std::time::Duration::from_secs(1));
+fn clear_screen(enable: bool) {
+    if enable {
+        print!("{esc}c", esc = 27 as char);
+        std::thread::sleep(std::time::Duration::from_millis(500));
+    }
 }
 
 fn main() {
+    let clear = false;
     println!("#start");
 
-    // Demo 1
     let vector = sync_async_count::count();
     println!("vector: {:?}", vector);
-    clear_screen();
+    clear_screen(clear);
 
-    // Demo 2
     channels::test_channels();
-    clear_screen();
+    clear_screen(clear);
 
-    // Demo 3
     many_threads::create_threads();
     many_threads::create_threads_arc();
-    clear_screen();
+    clear_screen(clear);
 
-    // Demo 4
     share_state::mutex();
     share_state::arc_mutex();
-    clear_screen();
+    clear_screen(clear);
 
-    // Demo 5
     clojoures::clojoures();
-    clear_screen();
+    clear_screen(clear);
 
-    // Demo 6
     string_ops::string_ops();
     string_ops::first_word();
-    clear_screen();
+    clear_screen(clear);
+
+    smart_pointers::run();
+    clear_screen(clear);
+
+    custom_structs::run();
 
     println!("#end");
 }
