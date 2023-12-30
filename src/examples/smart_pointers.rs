@@ -10,6 +10,8 @@ pub fn run() {
 
     // Box for recursive types
     let _list = Cons(Box::new(Cons(Box::new(Nil))));
+    // Vec![] already implements Box inside, so thats why it can be recursive
+    // Structs are allocated on the stack, so they can't be recursive by default
 
     // Deref trait
     let x = 5;

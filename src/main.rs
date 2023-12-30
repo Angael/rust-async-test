@@ -1,4 +1,6 @@
 mod examples;
+mod rcbox;
+
 use examples::{
     channels, clojoures, custom_structs, many_threads, share_state, smart_pointers, string_ops,
     sync_async_count,
@@ -41,6 +43,8 @@ fn main() {
     clear_screen(clear);
 
     custom_structs::run();
+
+    rcbox::run();
 
     println!("#end");
 }
