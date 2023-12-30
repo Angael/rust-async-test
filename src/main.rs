@@ -1,4 +1,5 @@
 mod examples;
+mod mutable_ref;
 mod rcbox;
 
 use examples::{
@@ -45,6 +46,8 @@ fn main() {
     custom_structs::run();
 
     rcbox::run();
+
+    mutable_ref::run();
 
     println!("#end");
 }
