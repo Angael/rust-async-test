@@ -3,8 +3,8 @@ mod mutable_ref;
 mod rcbox;
 
 use examples::{
-    channels, clojoures, custom_structs, many_threads, share_state, smart_pointers, string_ops,
-    sync_async_count,
+    channels, clojoures, custom_structs, longest_common_prevfix, many_threads, share_state,
+    smart_pointers, string_ops, sync_async_count,
 };
 
 fn clear_screen(enable: bool) {
@@ -18,8 +18,14 @@ fn main() {
     let clear = false;
     println!("#start");
 
-    let vector = sync_async_count::count();
-    println!("vector: {:?}", vector);
+    println!("[longest_common_prevfix]");
+    let result = longest_common_prevfix::longest_common_prefix(vec![
+        "flower".to_string(),
+        "flow".to_string(),
+        "flight".to_string(),
+        "floor".to_string(),
+    ]);
+    println!("{}", result);
     clear_screen(clear);
 
     channels::test_channels();

@@ -1,6 +1,7 @@
 pub mod channels;
 pub mod clojoures;
 pub mod custom_structs;
+pub mod longest_common_prevfix;
 pub mod many_threads;
 pub mod share_state;
 pub mod smart_pointers;
